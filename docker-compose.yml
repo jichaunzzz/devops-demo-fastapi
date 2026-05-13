@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    # 解决部分电脑 M1/M2 芯片或老版本兼容问题
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # 这里非常关键：DB_HOST 填的是上面数据库服务的名字 'db'
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: 123456
+      DB_NAME: testdb
+    depends_on:
+      - db
