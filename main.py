@@ -15,6 +15,6 @@ DB_NAME = os.getenv("DB_NAME", "testdb")
 def read_root():
     try:
         conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
-        return {"status": "Success", "message": "DevOps 魔法生效！这是我全自动部署的新版本！第四次！"}
+        return {"status": "Success", "message": "DevOps 魔法生效！这是我全自动部署的新版本！第五次！"}
     except Exception as e:
         return {"status": "Error", "message": str(e)}
